@@ -10,19 +10,13 @@ jobs:
       - name: Установка TeXLive
         run: |
           sudo apt-get install -y texlive-xetex
-
-      - name: Компиляция LaTeX-документа с использованием latexmk
-        run: |
-          sudo apt-get install -y latexmk
-          latexmk -pdf -interaction=nonstopmode -synctex=1 report.tex
-        continue-on-error: false
                   
       - name: Компиляция библиографии с помощью BibTeX
         run: |
           bibtex report
         continue-on-error: false
         
-      - name: Компиляция LaTeX-документа с использованием pdflatex (по необходимости)
+      - name: Компиляция LaTeX-документа с использованием pdflatex
         run: |
           sudo apt-get install -y texlive-latex-base
           pdflatex -interaction=nonstopmode -synctex=1 report.tex
