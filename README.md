@@ -23,7 +23,7 @@ Makefile используется для удаления файлов, полу
 
 ## Разработка
 Создать ветку feature_"name_branch" от ветки develop. При необходимости выполнить merge Вашей 
-ветки разработки в develop, создать PullRequests.
+ветки разработки в develop, создать PullRequests, дождаться merge.
 
 При commit проверьте содержимое через git status.
 
