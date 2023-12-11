@@ -1,25 +1,34 @@
-name: Build LaTeX document
+name: Сборка LaTeX-документа
 on: [push]
 jobs:
   build_latex:
     runs-on: ubuntu-latest
     steps:
-      - name: Set up Git repository
+      - name: Настройка репозитория Git
         uses: actions/checkout@v3
 
-      - name: Compile LaTeX document with latexmk
+      - name: Установка TeXLive
         run: |
           sudo apt-get install -y texlive-xetex
-          latexmk -pdf -interaction=nonstopmode -synctex=1 report.tex
-        continue-on-error: true  # Позволяет перейти к следующему шагу, даже если этот завершился с ошибкой
 
-      - name: Compile LaTeX document with pdflatex (if needed)
-        if: failure()  # Выполняется только если предыдущий шаг завершился с ошибкой
+      - name: Компиляция LaTeX-документа с использованием latexmk
+        run: |
+          sudo apt-get install -y latexmk
+          latexmk -pdf -interaction=nonstopmode -synctex=1 report.tex
+        continue-on-error: false
+                  
+      - name: Компиляция библиографии с помощью BibTeX
+        run: |
+          bibtex report
+        continue-on-error: false
+        
+      - name: Компиляция LaTeX-документа с использованием pdflatex (по необходимости)
         run: |
           sudo apt-get install -y texlive-latex-base
           pdflatex -interaction=nonstopmode -synctex=1 report.tex
-
-      - name: Upload PDF file
+        continue-on-error: false
+        
+      - name: Загрузка файла PDF
         uses: actions/upload-artifact@v3
         with:
           name: PDF
