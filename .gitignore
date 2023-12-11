@@ -6,6 +6,7 @@
 *.blg
 *.fdb_latexmk
 *.toc
+*.out
 *.gz
 main.synctex.gz
 .aux
