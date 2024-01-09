@@ -1,14 +1,22 @@
-\documentclass[a4paper,14pt, unknownkeysallowed]{extreport}
+\documentclass{bmstu}
+\usepackage{pdfpages}
 
-\include{parts/packages.tex}
+% \include{parts/packages.tex}
+\bibliography{biblio}
+\def\labelitemi{---}
 
 \begin{document}
 	
-	\include{parts/title.tex}
+	\makeresearchtitle
+    {Информатика, искусственный интеллект и системы управления} % Название факультета
+    {Программное обеспечение ЭВМ и информационные технологии} % Название кафедры
+    {Исследование методов распознования лиц в видеопотоке} % Тема работы
+    {Мамврийский~И.~С./ИУ7-56Б,Барсков~А.~Д./ИУ7-56Б, Салаев~Ю.~Д./ИУ7-56Б,Зайцев~К.~А./ИУ7-56Б} % Номер группы/ФИО студента (если авторов несколько, их необходимо разделить запятой)
+    {Кострицкий~А.~С.} % ФИО научного руководителя
+    {} % ФИО консультанта (необязательный аргумент; если консультантов несколько, их необходимо разделить запятой)
 	
-	\renewcommand{\contentsname}{Содержание}
-	\tableofcontents
-	\setcounter{page}{2}
+	\setcounter{page}{3}
+    \maketableofcontents
 	\include{parts/intro.tex}
 	\include{parts/pca.tex}
 	\include{parts/supportVector.tex}
@@ -16,5 +24,7 @@
 	\include{parts/elastikGraph.tex}
 	\include{parts/class.tex}
 	\include{parts/end.tex}
-	\include{parts/biblio.tex}
+
+    \makebibliography
+
 \end{document}
