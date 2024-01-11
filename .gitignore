@@ -10,3 +10,5 @@
 *.gz
 main.synctex.gz
 .aux
+*.xml
+*bcf
